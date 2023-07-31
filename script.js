@@ -1,44 +1,57 @@
+// script.js
 const Rock = 'rock';
 const Paper = 'paper';
 const Scissors = 'scissors';
-choices = [Rock, Paper, Scissors]
-
-getComputerChoice = () => {
-    compChoice = choices[Math.floor(Math.random() * choices.length)]
-   // console.log(compChoice);
-}  
-
-getPlayerChoice = () =>{
-    if (playerChoice = document.getElementById(Rock)){
-        playerChoice.addEventListener('click', () =>{
-        playerChoice.value = Rock
-        console.log(playerChoice.value);    
-        })} 
-    if (playerChoice = document.getElementById(Paper)){
-        playerChoice.addEventListener('click', () =>{
-        playerChoice.value = Paper
-        console.log(playerChoice.value);    
-        })} 
-    if (playerChoice = document.getElementById(Scissors)){
-        playerChoice.addEventListener('click', () =>{
-        playerChoice.value = Scissors
-        console.log(playerChoice.value);    
-        })} 
-}
+const choices = [Rock, Paper, Scissors];
+score = []
 
 
+function playRound(playerChoice) {
+    const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+    console.log('Player chose:', playerChoice);
+    console.log('Computer chose:', computerChoice);
 
-function playRound() {
-    // your code here!
-    getComputerChoice()
-     
+    // Logic to determine the winner goes here.
+    if (playerChoice === computerChoice) {
+        //console.log("It's a tie!");
+        score.push('T')
+    } else if (
+        (playerChoice === Rock && computerChoice === Scissors) ||
+        (playerChoice === Paper && computerChoice === Rock) ||
+        (playerChoice === Scissors && computerChoice === Paper)
+    ) {
+        //console.log('Player wins!');
+        score.push('P')
+    } else {
+       // console.log('Computer wins!');
+        score.push('C')
+    }
+    if (score.length == 5) {
+        countP = score.filter(ele => ele === 'P').length
+        countC = score.filter(ele => ele === 'C').length
+        if (countP > countC) {
+            console.log('Player wins!');
+        }
+        if (countC > countP) {
+            console.log('Comp wins');
+        } 
+        if(countC == countP) {
+            console.log('Tie', countC, countP);
+        }
+        
+    }
     
 }
 
 
-  
+function getPlayerChoice() {
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((e) => {
+        e.addEventListener('click', () => {
+            const playerChoice = e.id;
+            playRound(playerChoice); // Pass the player's choice to playRound.
+        });
+    });
+}
 
-
-const computerChoice = getComputerChoice();
-const playerSelection = getPlayerChoice();
- // console.log(playRound(playerSelection, computerSelection));
+getPlayerChoice();
