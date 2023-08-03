@@ -2,3 +2,33 @@ body{
     color: rgb(171, 206, 74);
     background-color: rgb(41, 41, 41);
 }
+.Score{
+    color:aqua;
+    text-align: center;
+    font-size: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.displayBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+    width: 450px;
+    height: 450px;
+    border: 15px solid yellow;
+}
+.displayBox .btn{
+    color: aquamarine;
+    text-align: center;
+    margin-top: 80%;
+    left: 0;
+    margin-right: auto;
+    font-size: 20px;
+    padding: 10px;
+    display: none;
+    border: 3px solid green;
+    background: none;
+}

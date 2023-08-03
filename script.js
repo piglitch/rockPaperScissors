@@ -6,6 +6,11 @@ const choices = [Rock, Paper, Scissors];
 score = []
 
 
+const playAgain = () => {
+    window.location.reload(); 
+}
+
+
 function playRound(playerChoice) {
     const computerChoice = choices[Math.floor(Math.random() * choices.length)];
     console.log('Player chose:', playerChoice);
@@ -27,16 +32,28 @@ function playRound(playerChoice) {
     if (score.length == 5) {
         countP = score.filter(ele => ele === 'P').length
         countC = score.filter(ele => ele === 'C').length
+        
+        
+        // To display the score
+         
         if (countP > countC) {
-            console.log('Player wins!');
+            const playerScore = document.querySelector('.Score');
+            playerScore.textContent = `Player wins! ${countP}-${countC}`; 
+           // console.log('Player wins!', countC, countP);
         }
         if (countC > countP) {
-            console.log('Comp wins');
+            const compScore = document.querySelector('.Score');
+            compScore.textContent = `Comp wins! ${countC} : ${countP}`;
+           // console.log('Comp wins', countC, countP);
         } 
         if(countC == countP) {
-            console.log('Tie', countC, countP);
-        }        
-    }    
+            const draw = document.querySelector('.Score');
+            draw.textContent = `Tie! ${countC} : ${countP}`;          
+           // console.log('Tie', countC, countP);
+        }  
+        document.querySelector('.btn').style.display = 'block';
+    }       
+
 }
 
 function getPlayerChoice() {
@@ -49,3 +66,10 @@ function getPlayerChoice() {
     });
 }
 getPlayerChoice();
+
+
+
+
+
+
+
