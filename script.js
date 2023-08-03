@@ -20,10 +20,8 @@ function playRound(playerChoice) {
         (playerChoice === Paper && computerChoice === Rock) ||
         (playerChoice === Scissors && computerChoice === Paper)
     ) {
-        //console.log('Player wins!');
         score.push('P')
     } else {
-       // console.log('Computer wins!');
         score.push('C')
     }
     if (score.length == 5) {
@@ -37,12 +35,9 @@ function playRound(playerChoice) {
         } 
         if(countC == countP) {
             console.log('Tie', countC, countP);
-        }
-        
-    }
-    
+        }        
+    }    
 }
-
 
 function getPlayerChoice() {
     const buttons = document.querySelectorAll('button');
@@ -53,5 +48,4 @@ function getPlayerChoice() {
         });
     });
 }
-
 getPlayerChoice();
